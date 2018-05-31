@@ -1,0 +1,12 @@
+.CategoryList {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 9px -9px;
+}
+
+.CategoryList a {
+    text-transform: capitalize;
+    margin: 9px;
+}
+
