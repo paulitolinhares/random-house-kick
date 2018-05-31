@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './CategoryList.css';
-import { capitalize } from '../lib/string';
 
 const CategoryList = ({ categories }) => {
     return (
