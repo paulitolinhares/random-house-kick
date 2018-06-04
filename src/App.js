@@ -1,16 +1,20 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 import Home from './components/pages/Home';
 import Joke from './components/pages/Joke';
+import './App.css';
 
 const App = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route path="/" exact component={Home}/>
-      <Route path="/jokes/:category" component={Joke}/>
-    </Switch>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Home}/>
+        <Route path="/jokes/:category" component={Joke}/>
+      </Switch>
+    </BrowserRouter>
+  </Provider>
 );
 
 export default App;
