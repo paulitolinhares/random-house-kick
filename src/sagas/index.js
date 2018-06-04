@@ -1,4 +1,4 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { getCategories, getRandomJoke } from '../api';
 
 function* fetchCategories() {
@@ -12,3 +12,9 @@ function* fetchCategories() {
         console.error(e);
     }
 }
+
+function* saga() {
+    yield takeLatest('CATEGORY_FETCH_REQUESTED', fetchCategories);
+}
+
+export default saga;

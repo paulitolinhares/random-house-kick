@@ -7,20 +7,36 @@ class Search extends Component {
 
         this.state = {
             searchTerm: '',
-            list: props.items
+            list: []
         }
 
         this.updateList = this.updateList.bind(this);
     }
 
+    static getDerivedStateFromProps(props, state) {
+        const { items } = props;
+        const { searchTerm } = state;
+        const filteredList = searchTerm !== '' ?
+                             items.filter(item => item.includes(searchTerm)) :
+                             items;
+        
+        return {
+            list: filteredList,
+            searchTerm
+        };
+    }
+
     updateList(term) {
         const { items } = this.props;
-        const filteredList = items.filter(item => item.includes(term))
+        const filteredList = term !== '' ?
+                             items.filter(item => item.includes(term)) :
+                             items;
         this.setState({
             searchTerm: term,
             list: filteredList
         });
-    }
+    }    
+
     render() {
         const { searchTerm, list } = this.state;
         return (
