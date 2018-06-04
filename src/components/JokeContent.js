@@ -8,7 +8,7 @@ const JokeContent = ({ joke, newJoke }) => {
             <div className="columns">
                 <div className="column is-half is-offset-one-quarter">
                     <div className="box">
-                        <h1 className="title">
+                        <h1 className="subtitle">
                             { joke }
                         </h1>
                         <div className="button-container">
