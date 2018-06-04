@@ -4,6 +4,7 @@ import { fetchJoke, jokeDone } from '../../actions';
 import JokeLoading from '../JokeLoading';
 import JokeDone from '../JokeDone';
 import JokeContent from '../JokeContent';
+import PageShell from '../PageShell';
 
 class Joke extends Component {
     constructor(props) {
@@ -48,7 +49,7 @@ class Joke extends Component {
                 }
                 {
                     jokeStatus === 'done' &&
-                    <JokeContent joke={joke} newJoke={() => this.loadJoke()} />
+                    <JokeContent joke={joke} newJoke={() => this.loadJoke()} back={() => this.props.history.goBack()} />
                 }
             </div>
         );
@@ -57,4 +58,4 @@ class Joke extends Component {
 
 const mapStateToProps = ({ joke, jokeStatus }) => ({ joke, jokeStatus });
 
-export default connect(mapStateToProps, { fetchJoke, jokeDone })(Joke);
+export default connect(mapStateToProps, { fetchJoke, jokeDone })(PageShell(Joke));

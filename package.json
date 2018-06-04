@@ -5,6 +5,7 @@
   "dependencies": {
     "bulma": "^0.7.1",
     "react": "^16.4.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",

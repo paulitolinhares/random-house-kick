@@ -4,6 +4,7 @@ import hero from '../../images/hero.jpg';
 import './Home.css';
 import { fetchCategories } from '../../actions';
 import { connect } from 'react-redux';
+import PageShell from '../PageShell';
 
 class Home extends Component {
     constructor(props) {
@@ -42,4 +43,4 @@ class Home extends Component {
 
 const mapStateToProps = ({ categories }) => ({ categories });
 
-export default connect(mapStateToProps, { fetchCategories })(Home);
+export default connect(mapStateToProps, { fetchCategories })(PageShell(Home));
