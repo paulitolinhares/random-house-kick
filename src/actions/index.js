@@ -6,3 +6,7 @@ export const fetchJoke = category => ({
     type: 'JOKE_FETCH_REQUESTED',
     payload: category
 });
+
+export const jokeDone = () => ({
+    type: 'JOKE_DONE'
+});
