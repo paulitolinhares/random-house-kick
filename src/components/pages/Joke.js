@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchJoke } from '../../actions';
 
-const Joke = () => (
-    <h1>Joke page</h1>
-);
+class Joke extends Component {
+    componentWillMount() {
+        this.loadJoke()
+    }
 
-export default Joke;
+    loadJoke() {
+        const category = this.getCategoryName();
+        this.props.fetchJoke(category);
+    }
+
+    getCategoryName() {
+        return this.props.match.params.category;
+    }
+    render() {
+        return (
+            <div>
+                
+            </div>
+        );
+    }
+}
+
+const mapStateToProps = ({ joke }) => ({ joke });
+
+export default connect(mapStateToProps, { fetchJoke })(Joke);
