@@ -6,6 +6,11 @@ import JokeDone from '../JokeDone';
 import JokeContent from '../JokeContent';
 
 class Joke extends Component {
+    constructor(props) {
+        super(props);
+
+        this.loadJoke = this.loadJoke.bind(this);
+    }
     componentWillMount() {
         this.loadJoke()
     }
@@ -43,7 +48,7 @@ class Joke extends Component {
                 }
                 {
                     jokeStatus === 'done' &&
-                    <JokeContent joke={joke} />
+                    <JokeContent joke={joke} newJoke={() => this.loadJoke()} />
                 }
             </div>
         );
