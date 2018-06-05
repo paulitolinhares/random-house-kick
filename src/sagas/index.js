@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, all } from 'redux-saga/effects';
 import { getCategories, getRandomJoke } from '../api';
 import { delay } from '../lib';
 
@@ -17,11 +17,13 @@ function* fetchCategories() {
 function* fetchJoke(action) {
   try {
     const joke = yield call(getRandomJoke, action.payload);
-    yield delay(1000); // Erase this line to remove the delay on the joke loading
-    yield put({
-      type: 'JOKE_FETCH_SUCCEEDED',
-      payload: joke.value,
-    });
+    yield all([
+      delay(1000), // Erase this line to remove the delay on the joke loading
+      put({
+        type: 'JOKE_FETCH_SUCCEEDED',
+        payload: joke.value,
+      })
+    ]);
   } catch (e) {
     console.error(e);
   }
