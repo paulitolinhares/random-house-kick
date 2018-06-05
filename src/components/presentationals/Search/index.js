@@ -2,16 +2,10 @@ import React, { Component } from 'react';
 import CategoryList from 'components/presentationals/CategoryList';
 
 class Search extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchTerm: '',
-      list: [],
-    };
-
-    this.updateList = this.updateList.bind(this);
-  }
+  state = {
+    searchTerm: '',
+    list: [],
+  };
 
   static getDerivedStateFromProps(props, state) {
     const { items } = props;
@@ -26,7 +20,7 @@ class Search extends Component {
     };
   }
 
-  updateList(term) {
+  updateList = (term) => {
     const { items } = this.props;
     const filteredList = term !== '' ?
       items.filter(item => item.includes(term)) :
