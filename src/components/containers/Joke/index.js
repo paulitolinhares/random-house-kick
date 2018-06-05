@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { fetchJoke, jokeDone } from 'actions';
 import JokeLoading from 'components/presentationals/JokeLoading';
@@ -7,12 +7,8 @@ import JokeContent from 'components/presentationals/JokeContent';
 import Error from 'components/presentationals/JokeError';
 import PageShell from 'components/hocs/PageShell';
 
-class Joke extends Component {
-  constructor(props) {
-    super(props);
+class Joke extends PureComponent {
 
-    this.loadJoke = this.loadJoke.bind(this);
-  }
   componentWillMount() {
     this.loadJoke();
   }
@@ -28,7 +24,7 @@ class Joke extends Component {
     }
   }
 
-  loadJoke() {
+  loadJoke = () => {
     const { match: { params: { category } } } = this.props;
     this.props.fetchJoke(category);
   }

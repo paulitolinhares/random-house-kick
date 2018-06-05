@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Search from 'components/presentationals/Search';
 import Error from 'components/presentationals/SearchError';
 import hero from 'images/hero.jpg';
@@ -6,14 +6,7 @@ import { fetchCategories } from 'actions';
 import { connect } from 'react-redux';
 import PageShell from 'components/hocs/PageShell';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      categories: [],
-    };
-  }
+class Home extends PureComponent {
 
   componentWillMount() {
     this.loadCategories();
