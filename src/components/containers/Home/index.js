@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from 'components/presentationals/Search';
+import Error from 'components/presentationals/SearchError';
 import hero from 'images/hero.jpg';
 import { fetchCategories } from 'actions';
 import { connect } from 'react-redux';
@@ -22,7 +23,7 @@ class Home extends Component {
     this.props.fetchCategories();
   }
   render() {
-    const { categories } = this.props;
+    const { categories, categoriesStatus } = this.props;
     return (
       <section className="Home section">
         <div className="container">
@@ -31,7 +32,12 @@ class Home extends Component {
               <h1 className="title">Random house kick!</h1>
               <h2 className="subtitle">Pick a category and get a Chuck Norris fun fact!</h2>
               <img src={hero} alt="Random house kick!" className="Hero" />
-              <Search items={categories} />
+              {
+                {
+                  loaded: <Search items={categories} />,
+                  failed: <Error />
+                }[categoriesStatus]
+              }
             </div>
           </div>
         </div>
@@ -40,6 +46,6 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ categories }) => ({ categories });
+const mapStateToProps = ({ categories, categoriesStatus }) => ({ categories, categoriesStatus });
 
 export default connect(mapStateToProps, { fetchCategories })(PageShell(Home));

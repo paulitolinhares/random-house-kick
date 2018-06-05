@@ -10,7 +10,8 @@ function* fetchCategories() {
       payload: categories,
     });
   } catch (e) {
-    console.error(e);
+    console.error(e.message);
+    yield put({type: 'CATEGORY_FETCH_FAILED'});
   }
 }
 
@@ -25,7 +26,8 @@ function* fetchJoke(action) {
       })
     ]);
   } catch (e) {
-    console.error(e);
+    console.error(e.message);
+    yield put({type: 'JOKE_FETCH_FAILED'});
   }
 }
 

@@ -1,0 +1,11 @@
+.SearchError button {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+}

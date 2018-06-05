@@ -1,7 +1,8 @@
 const initialState = {
   categories: [],
   joke: null,
-  jokeStatus: 'waiting', // can be ['waiting', 'loading', 'loaded', 'done']
+  jokeStatus: 'waiting', // can be ['waiting', 'loading', 'loaded', 'done', 'failed']
+  categoriesStatus: 'waiting' // can be ['waiting', 'loaded', 'failed']
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +11,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         categories: action.payload,
+        categoriesStatus: 'loaded'
+      };
+    case 'CATEGORY_FETCH_FAILED':
+      return {
+        ...state,
+        categories: [],
+        categoriesStatus: 'failed'
       };
     case 'JOKE_FETCH_REQUESTED':
       return {
@@ -22,6 +30,11 @@ const reducer = (state = initialState, action) => {
         joke: action.payload,
         jokeStatus: 'loaded',
       };
+    case 'JOKE_FETCH_FAILED':
+      return {
+        ...state,
+        jokeStatus: 'failed',
+      }
     case 'JOKE_DONE':
       return {
         ...state,

@@ -4,6 +4,7 @@ import { fetchJoke, jokeDone } from 'actions';
 import JokeLoading from 'components/presentationals/JokeLoading';
 import JokeDone from 'components/presentationals/JokeDone';
 import JokeContent from 'components/presentationals/JokeContent';
+import Error from 'components/presentationals/JokeError';
 import PageShell from 'components/hocs/PageShell';
 
 class Joke extends Component {
@@ -19,7 +20,7 @@ class Joke extends Component {
   componentDidUpdate(prevProps) {
     if (
       this.props.jokeStatus !== prevProps.jokeStatus &&
-            this.props.jokeStatus === 'loaded'
+      this.props.jokeStatus === 'loaded'
     ) {
       this.timeout = window.setTimeout(() => {
         this.props.jokeDone();
@@ -28,29 +29,22 @@ class Joke extends Component {
   }
 
   loadJoke() {
-    const category = this.getCategoryName();
+    const { match: { params: { category } } } = this.props;
     this.props.fetchJoke(category);
   }
 
-  getCategoryName() {
-    return this.props.match.params.category;
-  }
   render() {
     const { jokeStatus, joke } = this.props;
     return (
       <div className="Joke">
+      {
         {
-                    jokeStatus === 'loading' &&
-                    <JokeLoading />
-                }
-        {
-                    jokeStatus === 'loaded' &&
-                    <JokeDone />
-                }
-        {
-                    jokeStatus === 'done' &&
-                    <JokeContent joke={joke} newJoke={() => this.loadJoke()} back={() => this.props.history.goBack()} />
-                }
+          loading: <JokeLoading />,
+          loaded: <JokeDone />,
+          done: <JokeContent joke={joke} newJoke={this.loadJoke} back={this.props.history.goBack} />,
+          failed: <Error newJoke={this.loadJoke} back={this.props.history.goBack} />
+        }[jokeStatus]
+      }
       </div>
     );
   }
