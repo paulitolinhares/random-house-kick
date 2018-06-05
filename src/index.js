@@ -15,14 +15,13 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware(mySaga);
 
 const store = createStore(
-    reducer,
-    composeEnhancers(applyMiddleware(sagaMiddleware))
+  reducer,
+  composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
 
 sagaMiddleware.run(mySaga);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}>
+  <App />
+                </Provider>, document.getElementById('root'));
 registerServiceWorker();
