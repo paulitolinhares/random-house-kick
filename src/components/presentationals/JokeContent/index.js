@@ -1,5 +1,5 @@
 import React from 'react';
-import './JokeContent.css';
+import './style.css';
 
 const JokeContent = ({ joke, newJoke, back }) => {
     return (

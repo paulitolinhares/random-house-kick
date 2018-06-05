@@ -1,6 +1,6 @@
 import React from 'react';
-import loading from '../images/loading.gif';
-import './JokeLoading.css';
+import loading from 'images/loading.gif';
+import './style.css';
 
 const JokeLoading = () => {
     return (

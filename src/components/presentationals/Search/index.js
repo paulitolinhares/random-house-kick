@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CategoryList from './CategoryList';
+import CategoryList from 'components/presentationals/CategoryList';
 
 class Search extends Component {
     constructor(props) {

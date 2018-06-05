@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Search from '../Search';
-import hero from '../../images/hero.jpg';
-import './Home.css';
-import { fetchCategories } from '../../actions';
+import Search from 'components/presentationals/Search';
+import hero from 'images/hero.jpg';
+import { fetchCategories } from 'actions';
 import { connect } from 'react-redux';
-import PageShell from '../PageShell';
+import PageShell from 'components/hocs/PageShell';
 
 class Home extends Component {
     constructor(props) {

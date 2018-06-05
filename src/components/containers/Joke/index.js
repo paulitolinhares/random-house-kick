@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchJoke, jokeDone } from '../../actions';
-import JokeLoading from '../JokeLoading';
-import JokeDone from '../JokeDone';
-import JokeContent from '../JokeContent';
-import PageShell from '../PageShell';
+import { fetchJoke, jokeDone } from 'actions';
+import JokeLoading from 'components/presentationals/JokeLoading';
+import JokeDone from 'components/presentationals/JokeDone';
+import JokeContent from 'components/presentationals/JokeContent';
+import PageShell from 'components/hocs/PageShell';
 
 class Joke extends Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
-import done from '../images/done.gif';
-import './JokeDone.css';
+import done from 'images/done.gif';
+import './style.css';
 
 const JokeDone = () => {
     return (
