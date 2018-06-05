@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './style.css';
 
@@ -15,5 +16,9 @@ const CategoryList = ({ categories }) => (
             }
   </ul>
 );
+
+CategoryList.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default CategoryList;

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchJoke, jokeDone } from 'actions';
 import JokeLoading from 'components/presentationals/JokeLoading';
@@ -45,6 +46,13 @@ class Joke extends PureComponent {
     );
   }
 }
+
+Joke.propTypes = {
+  joke: PropTypes.string,
+  jokeStatus: PropTypes.string.isRequired,
+  fetchJoke: PropTypes.func.isRequired,
+  jokeDone: PropTypes.func.isRequired
+};
 
 const mapStateToProps = ({ joke, jokeStatus }) => ({ joke, jokeStatus });
 

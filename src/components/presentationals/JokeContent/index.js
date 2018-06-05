@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 
 const JokeContent = ({ joke, newJoke, back }) => (
@@ -18,5 +19,11 @@ const JokeContent = ({ joke, newJoke, back }) => (
     </div>
   </div>
 );
+
+JokeContent.propTypes = {
+  joke: PropTypes.string,
+  newJoke: PropTypes.func,
+  back: PropTypes.func
+};
 
 export default JokeContent;

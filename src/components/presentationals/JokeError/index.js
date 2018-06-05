@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.css';
 
 const JokeError = ({ newJoke, back }) => (
@@ -20,5 +21,10 @@ const JokeError = ({ newJoke, back }) => (
     </div>
   </div>
 );
+
+JokeError.propTypes = {
+  newJoke: PropTypes.func,
+  back: PropTypes.func
+};
 
 export default JokeError;

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Search from 'components/presentationals/Search';
 import Error from 'components/presentationals/SearchError';
 import hero from 'images/hero.jpg';
@@ -9,12 +10,9 @@ import PageShell from 'components/hocs/PageShell';
 class Home extends PureComponent {
 
   componentWillMount() {
-    this.loadCategories();
-  }
-
-  loadCategories() {
     this.props.fetchCategories();
   }
+
   render() {
     const { categories, categoriesStatus } = this.props;
     return (
@@ -38,6 +36,11 @@ class Home extends PureComponent {
     );
   }
 }
+
+Home.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categoriesStatus: PropTypes.string.isRequired
+};
 
 const mapStateToProps = ({ categories, categoriesStatus }) => ({ categories, categoriesStatus });
 

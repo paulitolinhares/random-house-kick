@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CategoryList from 'components/presentationals/CategoryList';
 
 class Search extends Component {
@@ -41,5 +42,9 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+ items: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default Search;
