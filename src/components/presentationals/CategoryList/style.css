@@ -4,9 +4,6 @@
     border-radius: 4px;
 }
 
-.CategoryList li {
-}
-
 .CategoryList li:not(:last-child) {
     border-bottom: 1px solid #dbdbdb;
 }
