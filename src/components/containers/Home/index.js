@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchCategories } from 'actions';
 import Search from 'components/presentationals/Search';
 import Error from 'components/presentationals/SearchError';
-import hero from 'images/hero.jpg';
-import { fetchCategories } from 'actions';
-import { connect } from 'react-redux';
 import PageShell from 'components/hocs/PageShell';
+import hero from 'images/hero.jpg';
 
 class Home extends PureComponent {
 

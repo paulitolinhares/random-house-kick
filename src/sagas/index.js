@@ -1,6 +1,6 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
-import { getCategories, getRandomJoke } from '../api';
-import { delay } from '../lib';
+import { getCategories, getRandomJoke } from 'api';
+import { delay } from 'lib';
 
 function* fetchCategories() {
   try {
