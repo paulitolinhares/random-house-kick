@@ -21,7 +21,7 @@ class Home extends PureComponent {
           <div className="columns">
             <div className="column is-half is-offset-one-quarter">
               <h1 className="title">Random house kick!</h1>
-              <h2 className="subtitle">Pick a category and get a Chuck Norris fun fact!</h2>
+              <p className="subtitle">Pick a category and get a Chuck Norris fun fact!</p>
               <img src={hero} alt="Random house kick!" className="Hero" />
               {
                 {
