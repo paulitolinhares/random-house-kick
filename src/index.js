@@ -1,23 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import reducer from './reducers';
-import mySaga from './sagas';
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 import App from './App';
 import 'bulma/css/bulma.css';
 import './index.css';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // makes redux devtools work
+const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
 
-const sagaMiddleware = createSagaMiddleware(mySaga);
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
 
-const store = createStore(
-  reducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware)),
-);
-
-sagaMiddleware.run(mySaga);
-
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+  , document.getElementById('root'));
