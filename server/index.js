@@ -1,15 +1,15 @@
 const { GraphQLServer } = require('graphql-yoga')
+const Query = require('./resolvers/Query')
 
 const typeDefs = `
 type Query {
-  info: String!
+  categories: [String!]!
+  joke(category: String): String!
 }
 `
 
 const resolvers = {
-  Query: {
-    info: () => `This is a GraphQL server`
-  }
+  Query
 }
 
 const server = new GraphQLServer({
